@@ -8,7 +8,7 @@ int main() {
     pid_t id = fork();
 
     if (id < 0) {
-        perror("fork failed");
+        printf("fork failed");
         exit(EXIT_FAILURE);
     } else if (id == 0) {
     
@@ -24,7 +24,7 @@ int main() {
         execv("/bin/ps", ps_args);
 
         
-        perror("execv failed");
+        printf("execv failed");
         exit(EXIT_FAILURE);
     }
 
