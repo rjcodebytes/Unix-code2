@@ -10,19 +10,23 @@ int main() {
     if (id < 0) {
         printf("fork failed");
         exit(EXIT_FAILURE);
-    } else if (id == 0) {
+    } 
     
+    else if (id == 0) {
         printf("Child process executing ls command:\n");
-        system("ls");
-        exit(EXIT_SUCCESS);
+        char *args[] = {"ls", NULL};
+        execv("/bin/ls", args);
+        printf("\n");    
+        
+        printf("execv failed");
+        exit(EXIT_FAILURE);
     } else {
         
         wait(NULL); 
-
-        printf("Parent process executing ps command:\n");
-        char *const ps_args[] = {"ps", NULL};
+        
+        printf("\nParent process executing ps command:\n");
+        char *ps_args[] = {"ps", NULL};
         execv("/bin/ps", ps_args);
-
         
         printf("execv failed");
         exit(EXIT_FAILURE);
