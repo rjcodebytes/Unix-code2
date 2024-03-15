@@ -13,7 +13,7 @@ int main() {
     } 
     
     else if (id == 0) {
-        printf("Child process executing ls command:\n");
+        printf("Child process executing ls command:%d\n",id);
         char *args[] = {"ls", NULL};
         execv("/bin/ls", args);
         printf("\n");    
@@ -24,7 +24,7 @@ int main() {
         
         wait(NULL); 
         
-        printf("\nParent process executing ps command:\n");
+        printf("\nParent process executing ps command:%d\n",id);
         char *ps_args[] = {"ps", NULL};
         execv("/bin/ps", ps_args);
         
